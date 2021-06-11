@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>Map</title>
+
+    <!-- ArcGIS API -->
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/3.36/esri/css/esri.css"
+    />
+    <script src="https://js.arcgis.com/3.36/"></script>
+
+    <!-- Script -->
+    <script>
+      require([
+        "esri/map",
+        "esri/layers/FeatureLayer",
+        "dojo/domReady!",
+      ], function (Map, FeatureLayer) {
+        // Create the map
+        var map = new Map("map", {
+          basemap: "hybrid",
+          center: [-82.44109, 35.6122],
+          zoom: 17,
+        });
+
+        // Add feature layer
+        var featureLayer = new FeatureLayer(
+          "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Landscape_Trees/FeatureServer/0"
+        );
+        map.addLayer(featureLayer);
+      });
+    </script>
+
+    <!-- Styles -->
+    <style>
+      html,
+      body,
+      #map {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body class="claro">
+    <div id="map"></div>
+  </body>
+</html>
